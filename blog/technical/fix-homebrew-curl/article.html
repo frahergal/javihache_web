@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--Styles -->
+    <link rel="stylesheet" href="../../../css/index.css" />
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sixtyfour&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Libraries -->
+    <script async src="../../../libs/microlight.js"></script>
+    <!-- Title -->
+    <title>
+      javihache.dev - Arreglando cosillas: Homebrew cannot find curl
+    </title>
+  </head>
+
+  <div id="header"></div>
+  <body>
+    <main>
+      <h2>Arreglando cosillas: Homebrew cannot find curl</h2>
+
+      <i>TL;DR: instala curl con </i><code>apt</code>
+
+      <p>
+        Hace unos días me encontré con un problema tras instalar Homebrew: no
+        podía encontrar el binario de curl a pesar de que estaba instalado.
+        Siguiendo la guía de brew, ejecuté el script de instalación. Todo fue
+        bien hasta que llegó a la descarga de <code>portable ruby</code>. Al
+        fallarme tuve que descargarlo manualmente y copiar la carpeta en el
+        directorio que estaba buscando el instalador.
+      </p>
+
+      <p>
+        Después de este apaño la instalación terminó de forma correcta, así que
+        hice un chequeo con <code>brew</code> para instalar algunas librerías.
+        Por desgracia, me encontré con el siguiente error:
+      </p>
+
+      <div class="microlight">
+        <p>$ brew doctor</p>
+        <p>
+          Error: Please update your system curl. <br />
+          Minimum required version: 7.41.0 <br />
+          Your curl version: <br />
+          Your curl executable: <br />
+          Your system is ready to brew.
+        </p>
+      </div>
+
+      <p>
+        Homebrew no estaba detectando la versión de curl a pesar de que estaba
+        instalado en mi <b>Ubuntu 22.04 LTS</b>
+      </p>
+
+      <div class="microlight">
+        <p>$ curl --version</p>
+        <p>
+          curl 7.82.0 (x86_64-pc-linux-gnu) libcurl/7.82.0 OpenSSL/1.1.1f
+          zlib/1.2.11 brotli/1.0.7 zstd/1.4.4 libidn2/2.2.0 libpsl/0.21.0
+          (+libidn2/2.2.0) libssh/0.9.3/openssl/zlib nghttp2/1.40.0 librtmp/2.3
+          libgsasl/1.8.1 OpenLDAP/2.4.49 <br />
+          Release-Date: 2022-03-05 <br />
+          Protocols: dict file ftp ftps gopher gophers http https imap imaps
+          ldap ldaps mqtt pop3 pop3s rtmp rtsp scp sftp smb smbs smtp smtps
+          telnet tftp<br />
+          Features: alt-svc AsynchDNS brotli gsasl GSS-API HSTS HTTP2
+          HTTPS-proxy IDN IPv6 Kerberos Largefile libz NTLM NTLM_WB PSL SPNEGO
+          SSL TLS-SRP UnixSockets zstd
+        </p>
+      </div>
+
+      <h3><u>La solución</u></h3>
+
+      <p>
+        Me di cuenta de que los binarios de <code>curl</code> estaban instalados
+        como paquetes <code>snap</code>, probablemente durante la instalación
+        del propio Ubuntu. Así que decidí instalar <code>curl</code> usando
+        <code>apt</code>.
+      </p>
+
+      <div class="microlight">
+        <p>$ sudo apt-get install curl</p>
+      </div>
+
+      <p>
+        Tras la instalación, al ejecutar de nuevo la verificación con
+        <code>brew</code>, todo estaba funcionando correctamente
+      </p>
+
+      <div class="microlight">
+        <p>$ brew doctor</p>
+        <p>Your system is ready to brew.</p>
+      </div>
+
+      <p>Problema resuelto :)</p>
+
+      <p>
+        Ahora la cuestión es: esta no es una solución óptima, ya que al final lo
+        único que estoy haciendo es duplicar los paquetes. Aunque no he llegado
+        a probarlo, es probable que lo mejor hubiese sido encontrar por qué
+        <code>brew</code> no es capaz de resolver el <code>PATH</code> de los
+        binarios instalados mediante <code>snap</code>
+        y resolverlo mediante variables de entorno. En cualquier caso, he
+        querido dejar reflejado en este post mi solución por si a alguien le
+        sirve de ayuda :D
+      </p>
+    </main>
+  </body>
+
+  <div id="footer"></div>
+  <script src="../../../index.js"></script>
+</html>

@@ -1,0 +1,73 @@
+<meta name="”robots”" content="”noindex”" />
+<!-- Template file for common content in blog pages-->
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--Styles -->
+    <link rel="stylesheet" href="../../../css/index.css" />
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sixtyfour&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Libraries -->
+    <script async src="../../../libs/microlight.js"></script>
+    <!-- Title -->
+    <title>
+      javihache.dev - Arreglando cosillas: Iluminación estática en UE5
+    </title>
+  </head>
+
+  <div id="header"></div>
+  <body>
+    <main>
+      <h2>Arreglando cosillas: Iluminación estática en UE5</h2>
+
+      <p>
+        Si estás trabajando con UE, y tienes problemas porque la iluminación
+        estática, este es tu post.
+      </p>
+      <img
+        src="imgs/static_lightning_error_screenshot.JPG"
+        alt="Captura de pantalla en UE5 mostrando luces estáticas sin ninguna iluminación visible"
+      />
+      <p>
+        Este problema se debe a que por defecto, el sistema de iluminación en
+        los proyectos de UE5 es Lumen. En este post no voy a debatir sus
+        bondades o sus desventajas, pero si quieres solucionar este problema
+        fácilmente y tienes un ordenador patata como el mio, sigue estos pasos
+        para solucionar este problema y seguir haciendo uso de luces estáticas
+        😉
+      </p>
+      <p>Primero ve a Edit > Project Settings</p>
+      <img
+        src="imgs/project_settings_menu.JPG"
+        alt="Captura de pantalla de las preferencias del proyecto en UE5"
+      />
+      <p>
+        En Project Settings busca Lumen in selecciona "None" en la opción
+        Dynamic Global Illumination Method.
+      </p>
+      <img
+        src="imgs/dynamic_global_illumination_method_option.JPG"
+        alt="Captura de pantalla de la opción Dynamic Global Illumination Method en UE5"
+      />
+      <p>
+        Tras actualizar esta opción, si ya habías generado tu iluminación
+        estática podrás ver cómo automáticamente aparece en la escena actual. Si
+        no, genera la iluminación (bake lightning) y comprueba tus resultados
+      </p>
+      <img
+        src="imgs/static_lightning_fixed_screenshot.JPG"
+        alt="Captura de pantalla de una escena en UE5 monstrando luces estáticas"
+      />
+    </main>
+  </body>
+
+  <div id="footer"></div>
+  <script src="../../../index.js"></script>
+</html>
