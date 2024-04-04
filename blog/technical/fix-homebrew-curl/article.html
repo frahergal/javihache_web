@@ -13,7 +13,8 @@
       rel="stylesheet"
     />
     <!-- Libraries -->
-    <script async src="../../../libs/microlight.js"></script>
+    <script async src="../../../libs/prism/prism.js"></script>
+    <link href="../../../libs/prism/prism.css" rel="stylesheet" />
     <!-- Title -->
     <title>
       javihache.dev - Arreglando cosillas: Homebrew cannot find curl
@@ -42,38 +43,35 @@
         Por desgracia, me encontré con el siguiente error:
       </p>
 
-      <div class="microlight">
-        <p>$ brew doctor</p>
-        <p>
-          Error: Please update your system curl. <br />
-          Minimum required version: 7.41.0 <br />
-          Your curl version: <br />
-          Your curl executable: <br />
-          Your system is ready to brew.
-        </p>
-      </div>
+      <pre><code class="lang-shell">
+        $ brew doctor
 
+          Error: Please update your system curl. 
+          Minimum required version: 7.41.0 
+          Your curl version: 
+          Your curl executable: 
+          Your system is ready to brew.
+        </code></pre>
       <p>
         Homebrew no estaba detectando la versión de curl a pesar de que estaba
         instalado en mi <b>Ubuntu 22.04 LTS</b>
       </p>
 
-      <div class="microlight">
-        <p>$ curl --version</p>
-        <p>
+      <pre><code class="lang-shell">
+        $ curl --version
+
           curl 7.82.0 (x86_64-pc-linux-gnu) libcurl/7.82.0 OpenSSL/1.1.1f
           zlib/1.2.11 brotli/1.0.7 zstd/1.4.4 libidn2/2.2.0 libpsl/0.21.0
           (+libidn2/2.2.0) libssh/0.9.3/openssl/zlib nghttp2/1.40.0 librtmp/2.3
-          libgsasl/1.8.1 OpenLDAP/2.4.49 <br />
-          Release-Date: 2022-03-05 <br />
+          libgsasl/1.8.1 OpenLDAP/2.4.49 
+          Release-Date: 2022-03-05 
           Protocols: dict file ftp ftps gopher gophers http https imap imaps
           ldap ldaps mqtt pop3 pop3s rtmp rtsp scp sftp smb smbs smtp smtps
-          telnet tftp<br />
+          telnet tftp
           Features: alt-svc AsynchDNS brotli gsasl GSS-API HSTS HTTP2
           HTTPS-proxy IDN IPv6 Kerberos Largefile libz NTLM NTLM_WB PSL SPNEGO
           SSL TLS-SRP UnixSockets zstd
-        </p>
-      </div>
+        </code></pre>
 
       <h3><u>La solución</u></h3>
 
@@ -84,19 +82,19 @@
         <code>apt</code>.
       </p>
 
-      <div class="microlight">
-        <p>$ sudo apt-get install curl</p>
-      </div>
+      <pre><code class="lang-shell">
+        $ sudo apt-get install curl
+      </code></pre>
 
       <p>
         Tras la instalación, al ejecutar de nuevo la verificación con
         <code>brew</code>, todo estaba funcionando correctamente
       </p>
 
-      <div class="microlight">
-        <p>$ brew doctor</p>
-        <p>Your system is ready to brew.</p>
-      </div>
+      <pre><code class="lang-shell">
+        $ brew doctor
+        Your system is ready to brew.
+      </code></pre>
 
       <p>Problema resuelto :)</p>
 

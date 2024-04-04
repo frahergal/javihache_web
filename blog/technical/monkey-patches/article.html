@@ -1,0 +1,130 @@
+<meta name="”robots”" content="”noindex”" />
+<!-- Template file for common content in blog pages-->
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--Styles -->
+    <link rel="stylesheet" href="../../../css/index.css" />
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sixtyfour&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Libraries -->
+    <script async src="../../../libs/prism/prism.js"></script>
+    <link href="../../../libs/prism/prism.css" rel="stylesheet" />
+    <!-- Title -->
+    <title>javihache.dev - Monkey patches</title>
+  </head>
+
+  <div id="header"></div>
+  <body>
+    <main>
+      <h2>Monkey patches</h2>
+      <p>¿Sabes qué son los parches de mono o <i>monkey patches</i>? 🐒</p>
+      <p>
+        Probablemente los hayas visto antes o incluso los hayas implementado sin
+        darte cuenta. En este post te voy a aclarar este concepto para
+        introducir <i>hotfixes</i> o parches en tu código.
+      </p>
+      <img
+        src="./imgs/monkey_patches_card.png"
+        alt="Imagen con el texto Monkey Patches y un dibujo de un mono"
+      />
+      <p>
+        Un <i>monkey patch</i> es una expresión que se utiliza para aquellos
+        cambios o parches que se hacen durante tiempo de ejecución a
+        funcionalidades que ya han sido implementadas en nuestro código o en
+        librerías o componentes externos.
+      </p>
+      <p>
+        Esta técnica se utiliza normalmente para modificar una lógica especifica
+        y arreglar algunos casos aislados temporalmente.
+      </p>
+      <p>Un ejemplo en Javascript podría ser el siguiente:</p>
+      <pre>
+        <code class="lang-js">
+            // Create a class with a defined behaviour
+            class Monkey {
+              constructor(name) {
+                this.name = name;
+              }
+            
+              sayMyName() {
+                console.log(this.name);
+              }
+            }
+            
+            // Create a couple of Monkey instances
+            let monkeyAndrew = new Monkey("Andrew");
+            let monkeyRyan = new Monkey("Ryan");
+            
+            // Monkey Patch the method "sayMyName" 
+            // for the instance monkeyAndrew
+            monkeyAndrew.sayMyName = () => {
+              console.log(monkeyAndrew.name + " I");
+            };
+            
+            // Call to the method "sayMyName"
+            monkeyAndrew.sayMyName();
+            monkeyRyan.sayMyName();
+        </code>
+      </pre>
+      <p>Al ejecutarlo nos devolvería lo siguiente:</p>
+      <pre>
+        <code class="lang-shell">
+            Andrew I
+            Ryan
+        </code>
+      </pre>
+      <p>
+        Como puedes ver, lo que hemos hecho ha sido aplicar un
+        <i>Monkey patch</i> a la instancia <code>monkeyAndrew</code> de nuestra
+        clase <code>Monkey</code>. De esta forma el cambio en el comportamiento
+        de nuestro código ha afectado solamente a un objeto en cuestión y no al
+        resto.
+      </p>
+      <p>
+        Los <i>Monkey patches</i> también pueden aplicarse a librerías o
+        componentes externos si el lenguaje o frameworks permite tales
+        modificaciones. Por ejemplo, en Python:
+      </p>
+      <pre>
+        <code class="lang-python">
+            >>> import math
+
+            # Print PI
+            >>> math.pi
+            3.141592653589793
+
+            # Monkey patch PI and print it
+            >>> math.pi = 3.1
+            >>> math.pi
+            3.1
+        </code>
+      </pre>
+      <p>
+        Esta práctica puede ser realmente útil si hay un caso específico en el
+        que nos interesa cambiar el comportamiento de un componente por defecto.
+        A pesar de todo, no es muy recomendable aplicar este tipo de parches.
+        Introducir <i>Monkey patches</i> en tu código crea una lógica que no es
+        la esperaday puede inducir errores o comportamientos extraños que más
+        adelante serán difíciles de identificar.
+      </p>
+      <p>
+        Puede tener cierto sentido aplicar este tipo de parches en los tests
+        unitarios. Cuando creamos un <i>stub</i> o un <i>mock</i> de un método
+        para obtener datos sin llamar al método real. En cualquier otro caso es
+        posible que haya mejores soluciones, como extender la clase o la función
+        que necesitemos parchear para añadirle la funcionalidad deseada.
+      </p>
+    </main>
+  </body>
+
+  <div id="footer"></div>
+  <script src="../../../index.js"></script>
+</html>
