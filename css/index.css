@@ -1,7 +1,5 @@
 /* styles.css */
 
-/* General styles */
-
 header {
   background-color: #111;
   display: grid;
@@ -11,6 +9,7 @@ header {
   padding: 1rem;
 }
 
+/* Header and menu responsive display */
 @media (min-width: 960px) {
   header {
     grid-template-columns: auto 1fr;
@@ -72,14 +71,6 @@ footer p {
   text-align: center;
 }
 
-/* Website title class */
-.title {
-  color: #fff;
-  font-family: "Sixtyfour";
-  font-size: 1.5rem;
-  margin: 0;
-}
-
 /* Navbar */
 nav ul {
   list-style: none;
@@ -99,11 +90,26 @@ nav ul li a:visited {
   color: burlywood;
 }
 
+
+/* Website title class */
+.title {
+  color: #fff;
+  font-family: "Sixtyfour";
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+
+/* Menu styles */
 .menu {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   gap: 1rem;
+}
+
+.menu li {
+  display: none;
 }
 
 /* Main: posts lists*/
@@ -144,6 +150,7 @@ nav ul li a:visited {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
+  text-align: center;
 }
 
 .networks-div a {
