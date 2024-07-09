@@ -1,0 +1,67 @@
+<meta name="”robots”" content="”noindex”" />
+<!-- Template file for common content in blog pages-->
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--Styles -->
+    <link rel="stylesheet" href="../../../css/index.css" />
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sixtyfour&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Libraries -->
+    <script async src="../../../libs/prism/prism.js"></script>
+    <link href="../../../libs/prism/prism.css" rel="stylesheet" />
+    <!-- Title -->
+    <title>javihache.dev - Encontrando el bug con git-bisect</title>
+  </head>
+
+  <div id="header"></div>
+  <body>
+    <main>
+      <h2>Encontrando el bug con git-bisect</h2>
+      <p>
+        Imagina que estás trabajando en un proyecto y un día te das cuenta de
+        que algún componente ya no funciona. Los logs no dan ninguna pista sobre
+        dónde está el problema. Hay tantas líneas de código para el componente
+        que pasarías años depurándola. También es imposible identificar el error
+        ejecutando pruebas. Pero hay un detalle importante, sabes que en la
+        versión anterior el componente funcionaba bien. ¿Qué harías para
+        identificar el código problemático?
+      </p>
+      <img
+        src="imgs/git_bisect_card.png"
+        alt="Imagen de presentación del artículo con el texto git bisect"
+      />
+      <p>
+        Seguramente podrías dar varias respuestas a esta pregunta, pero hoy
+        vamos a hablar sobre una operación de git que te ayudará a resolver este
+        problema: <code>git bisect</code>
+      </p>
+      <p>
+        Usando el comando <code>git bisect</code> podremos identificar el commit
+        exacto que introdujo el error en nuestro software. Bajo el capó, git
+        bisect realizará una búsqueda binaria tomando como punto de partida una
+        versión buena y una versión con fallos.
+      </p>
+      <p>
+        Como ejercicio práctico he creado un
+        <a href="https://github.com/frahergal/git_bisect_exercise"
+          >repositorio en Github</a
+        >
+        para seguir los siguientes pasos si quieres probar git bisect por ti
+        mismo. No te preocupes, solo necesitas un terminal. El proyecto contiene
+        solo un script bash que imprime si la versión está funcionando o si está
+        fallando. De esa manera vamos a simular un caso real.
+      </p>
+    </main>
+  </body>
+
+  <div id="footer"></div>
+  <script src="../../../index.js"></script>
+</html>
